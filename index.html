@@ -10,80 +10,63 @@
 transition: all 0.3s ease;
 }
 
-div {
-position: absolute;
-}
-
 html, body {
 width: 100%;
-height: 100%;
+heigth: 100%;
 margin: 0;
+}
+
+div {
+position: absolute;
 }
 </style>
 
 <script type="text/javascript">
-$(function() {
-console.log(
-$("div").each(function(index) {
-let width = Math.round(Math.random() * 1000)
-let height = Math.round(Math.random() * 1000)
-let x = Math.round(Math.random() * 1000)
-let y = Math.round(Math.random() * 1000)
 
-let r = Math.floor(Math.random() * 255) + 1
-let g = Math.floor(Math.random() * 255) + 1
-let b = Math.floor(Math.random() * 255) + 1
+function generatePercent() {
+let number = Math.round(Math.random() * 100)
+let percent = "%"
+return number + percent
+}
 
-let color = [r, g, b].join()
+function generateColorChannel() {
+return Math.floor(Math.random() * 255)
+}
 
-$(this).css({
-"top": y + "px",
-"left": x + "px",
-"width": width + "px",
-"height": height + "px",
-"background-color": "rgb(" + color + ")"
+function generateColor() {
+let r = generateColorChannel()
+let g = generateColorChannel()
+let b = generateColorChannel()
+let color = "rgb(" + [r, g, b].join() + ")"
+
+return color
+}
+
+function changeRectangleCSS(element) {
+element.css({
+"top": generatePercent(),
+"left": generatePercent(),
+"width": generatePercent(),
+"height": generatePercent(),
+"background-color": generateColor()
 })
-}))
+}
+
+$(function() {
+$("div").each(function(index) {
+changeRectangleCSS($(this))
 
 $(this).on("mouseenter", function() {
-let width = Math.round(Math.random() * 1000)
-let height = Math.round(Math.random() * 1000)
-let x = Math.round(Math.random() * 1000)
-let y = Math.round(Math.random() * 1000)
-
-let r = Math.floor(Math.random() * 255) + 1
-let g = Math.floor(Math.random() * 255) + 1
-let b = Math.floor(Math.random() * 255) + 1
-
-let color = [r, g, b].join()
+changeRectangleCSS($(this))
+})
+})
 })
 
-})
 </script>
 
 </head>
 <body>
 
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
-<div></div>
 <div></div>
 <div></div>
 <div></div>
